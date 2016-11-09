@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h1 class="text-center">New Comment</h1> 
+    <div class="container" style="width:30%; margin:25px auto">
+        <form action="/bestbars/<%= barslist._id %>/comments" method="POST">
+            <div class="form-group"><input class="form-control" type="text"  name="comment[text]" placeholder="Type New Comment"></div>
+            <div class="form-group"><input class="form-control" type="text" name="comment[author]" placeholder="Author"></div>
+            <div class="form-group"><button class="btn btn-lg btn-primary btn-block">Post Comment</button></div>
+        </form>
+    </div>
+</div>
+<% include ../partials/footer %>

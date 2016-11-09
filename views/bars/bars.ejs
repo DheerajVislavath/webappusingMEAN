@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Best Bars</h1>
+             <p>Check out the famous bar in your locale!</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="https://learn-webdev1-dheeraj333.c9users.io/bestbars/new">Add New Bar in your Local!</a> 
+            </p>
+        </div>
+    </header>
+   
+    <div class="row text-center" style="display:flex; flex-wrap:wrap">
+        <% barslist.forEach(function(barslist){ %>
+        <div class="col-md-4" "col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= barslist.image %>">
+                    <div class="caption"><strong><%= barslist.name %></strong></div>
+                    <a class="btn btn-primary" href=" /bestbars/<%= barslist.id %>">More Info</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<p>
+<% include ../partials/footer %>
+</p>

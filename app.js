@@ -9,13 +9,12 @@ var seedDB = require("./seeds"),
     User = require("./models/user"),
     Comment = require("./models/comments");
     
-   
-seedDB();
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/bars_list");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+seedDB();
 
 //Passport Config
 app.use(require("express-session")({
@@ -28,7 +27,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 
 
 //index route
@@ -122,7 +124,7 @@ app.get("/register", function(req,res){
 
 //Sign up route
 app.post("/register", function(req,res){
-    User.register({username: req.body.username}, req.body.password, function(err, user){
+    User.register( {username: req.body.username}, req.body.password, function(err, user){
        if(err){
            console.log(err);
            res.render("register");
@@ -152,12 +154,13 @@ app.get("/logout", function(req,res){
     res.redirect("/login");
 });
 
-function isLoggedIn(req,res, next){
-    if(req.isAuthenticated){
-        return next;
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
     }
     res.redirect("/login");
 }
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("The Yelpcamp Server has started!");

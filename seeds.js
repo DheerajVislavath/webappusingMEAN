@@ -23,34 +23,34 @@ var data = [
     
     function seedDB(){
         Barslist.remove({}, function(err){
-        if(err){
-            console.log(err);
-        }
-        console.log("Barslist Removed");
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     console.log("Barslist Removed");
         
-        data.forEach(function(seed){
-            Barslist.create(seed,function(err, barslist){
-                if(err){
-                    console.log(err);
-                }
-                else{
-                console.log("Added a Bar!");
+    //     data.forEach(function(seed){
+    //         Barslist.create(seed,function(err, barslist){
+    //             if(err){
+    //                 console.log(err);
+    //             }
+    //             else{
+    //             console.log("Added a Bar!");
                 
-                Comments.create({
-                  text: "This place is great, but I wish there was internet",
-                            author: "Homer"  }, function(err, comment){
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        barslist.comment.push(comment);
-                        barslist.save();
-                        console.log("Created a new comment");
-                    }
-                });
-                }
-            });
-        });
+    //             Comments.create({
+    //               text: "This place is great, but I wish there was internet",
+    //                         author: "Homer"  }, function(err, comment){
+    //                 if(err){
+    //                     console.log(err);
+    //                 }
+    //                 else{
+    //                     barslist.comment.push(comment);
+    //                     barslist.save();
+    //                     console.log("Created a new comment");
+    //                 }
+    //             });
+    //             }
+    //         });
+    //     });
     });
     }
     

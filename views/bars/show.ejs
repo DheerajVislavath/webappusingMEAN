@@ -15,17 +15,29 @@
                 <div class="caption-full">
                     <a><h4 class=""><%= barslist.name %></h4></a>
                     <p><p><%= barslist.description %></p></p>
+                    <% if(currentUser && barslist.author.id.equals(currentUser._id)){ %>
+                       <a class="btn btn-xs btn-warning" href="/bestbars/<%= barslist._id%>/edit">Edit</a>
+                        <form id="delete-form" action="/bestbars/<%= barslist._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form> 
+                <% } %>
                 </div>
             </div>
             <div class="well">
                <div class="pull-right"><a class="btn btn-success" href="/bestbars/<%= barslist._id%>/comments/new">Add New Comment</a></div>
                 <hr>
                 <% barslist.comment.forEach(function(comment){ %>
-                 <p><strong><%= comment.author %></strong>
+                 <p><strong><%= comment.author.username %></strong>
                  <span class="pull-right">10 days ago</span>
                  </p>
                  <p> <%= comment.text %></p>
-                <% })%>
+                 <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                 <a class="btn btn-xs btn-warning" href="/bestbars/<%= barslist._id %>/comments/<%= comment._id%>/edit">Edit</a>
+                 <form id="delete-form" action="<%= barslist.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                     <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                 </form>
+                    <% } %>
+                <% })%> 
                 <% include ../partials/footer %>
             </div>
         </div>

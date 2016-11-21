@@ -4,7 +4,8 @@
   "description": "The YelpCamp Website",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Dheeraj V",
   "license": "ISC",
@@ -13,6 +14,8 @@
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.6.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0"

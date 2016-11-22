@@ -15,6 +15,7 @@
                 <div class="caption-full">
                     <a><h4 class=""><%= barslist.name %></h4></a>
                     <p><p><%= barslist.description %></p></p>
+                    <em>Posted by: <strong><%= barslist.author.username %></strong> </em>
                     <% if(currentUser && barslist.author.id.equals(currentUser._id)){ %>
                        <a class="btn btn-xs btn-warning" href="/bestbars/<%= barslist._id%>/edit">Edit</a>
                         <form id="delete-form" action="/bestbars/<%= barslist._id%>?_method=DELETE" method="POST">

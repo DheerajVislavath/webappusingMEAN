@@ -16,8 +16,10 @@ var barslistRoutes = require("./routes/barslist.js"),
     indexRoutes = require("./routes/index.js");
     
 mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://localhost/bars_list");
-mongoose.connect("mongodb://dheeraj:password@ds159517.mlab.com:59517/bestbars");
+//mongoose.connect("mongodb://dheeraj:password@ds159517.mlab.com:59517/bestbars");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));

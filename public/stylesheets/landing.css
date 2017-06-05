@@ -42,22 +42,22 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url(../img/menu-restaurant-vintage-table.jpg);
+  background-image: url(../img/menu-restaurant-vintage-table-min.jpg);
 }
 .slideshow li:nth-child(2) { 
-  background-image: url(../img/food-salad-restaurant-person.jpg);
+  background-image: url(../img/food-salad-restaurant-person-min.jpg);
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url(../img/pexels-photo-213661.jpeg);
+  background-image: url(../img/pexels-photo-213661-min.jpeg);
   animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url(../img/pexels-photo-370984.jpeg);
+  background-image: url(../img/pexels-photo-370984-min.jpeg);
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(../img/restaurant-village-germany-chairs.jpg);
+  background-image: url(../img/restaurant-village-germany-chairs-min.jpg);
   animation-delay: 40s; 
 }
 

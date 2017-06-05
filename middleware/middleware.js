@@ -6,6 +6,7 @@ middlewareobj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "You need to be logged in to do that");
     res.redirect("/login");
 }
 
@@ -14,6 +15,7 @@ middlewareobj.checkCommentOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, comment){
             if(err){
+                req.flash("error", "Something went wrong");
                 res.redirect("back");
             }
             else{
@@ -21,12 +23,14 @@ middlewareobj.checkCommentOwnership = function(req, res, next){
                     next();
                 }
                 else{
+                    req.flash("error", "You do not have permission to do that");
                     res.redirect("back");
                 }
             }
-        });    
+        });
     }
     else{
+        req.flash("error", "You need to be logged in to do that");
         res.redirect("back");
     }
 }
@@ -42,6 +46,7 @@ middlewareobj.checkArticleOwnership = function(req, res, next){
                          next();
                     }
                     else{
+                        req.flash("error", "You do not have permission to do that");
                         res.redirect("back");
                     }
                
@@ -49,6 +54,7 @@ middlewareobj.checkArticleOwnership = function(req, res, next){
         });
     }
     else{
+        req.flash("error", "You need to be logged in to do that");
         res.redirect("back");
     }
 }

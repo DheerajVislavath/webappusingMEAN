@@ -1,10 +1,41 @@
-<% include partials/header %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Best Restaurants</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <div id="landing-header">
+ 		<h1>Hello Folks!</h1>
+ 		<h1>Find Best Restaurants in your city</h1>
+		<a href="/bestbars/" class="btn btn-lg btn-success">View All Reviews</a>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 
-    <h1>Best Restaurants</h1>
-</div>
-<p>Find best restaurants in your Locale !</p>
-
-<a href="/bestbars/">View Best restaurants in your city!</a>
-<p>
 <% include partials/footer %>
-</p>
+
+

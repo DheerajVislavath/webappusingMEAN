@@ -25,6 +25,7 @@ router.post("", middleware.isLoggedIn, function(req,res){
         else{
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
+                    req.flash("error", "Something went wrong!");
                     console.log(err);
                 }
                 else{
@@ -33,6 +34,7 @@ router.post("", middleware.isLoggedIn, function(req,res){
                     comment.save();
                     barslist.comment.push(comment);
                     barslist.save();
+                    req.flash("success", "Successfully added Comment");
                     res.redirect('/bestbars/' + barslist._id);
                 }
             });
@@ -55,6 +57,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership,function(req,res){
             res.redirect("back");  
         }
         else{
+            req.flash("success", "Comment Updated!");
             res.redirect("/bestbars/" + req.params.id);
         }
     });
@@ -68,6 +71,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req,res
             res.redirect("back");
         }
         else{
+            req.flash("success", "Comment Deleted!");
             res.redirect("/bestbars/" + req.params.id);
         }
     })

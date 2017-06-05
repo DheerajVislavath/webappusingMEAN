@@ -19,14 +19,16 @@ router.get("/register", function(req,res){
 
 //Sign up route
 router.post("/register", function(req,res){
-    User.register( {username: req.body.username}, req.body.password, function(err, user){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
        if(err){
            console.log(err);
-           res.render("register");
-       }
-       else{
-           passport.authenticate("local")(req,res, function(){
-               res.redirect("/bestbars");
+           req.flash("error", err.message );
+           res.redirect("/bestbars");
+       } else {
+             passport.authenticate("local")(req,res, function(){
+             req.flash("success", "Welcome " + user.username );
+             res.redirect("/bestbars");
            });
        }
     });
@@ -46,7 +48,8 @@ router.post("/login", passport.authenticate("local" ,{
 //logout route
 router.get("/logout", function(req,res){
     req.logout();
-    res.redirect("/login");
+    req.flash("success", "You have Successfully Logged out!");
+    res.redirect("/bestbars");
 });
 
 

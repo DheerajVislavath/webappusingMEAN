@@ -13,8 +13,9 @@
             <div class="thumbnail">
                 <img class="img-reponsive" src="<%= barslist.image %>">
                 <div class="caption-full">
+                    <h4 class="pull-right">$<%= barslist.price %>/person</h4>
                     <a><h4 class=""><%= barslist.name %></h4></a>
-                    <p><p><%= barslist.description %></p></p>
+                    <p><%= barslist.description %></p>
                     <em>Posted by: <strong><%= barslist.author.username %></strong> </em>
                     <% if(currentUser && barslist.author.id.equals(currentUser._id)){ %>
                        <a class="btn btn-xs btn-warning" href="/bestbars/<%= barslist._id%>/edit">Edit</a>

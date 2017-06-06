@@ -18,13 +18,14 @@ router.get("/", function(req,res){
 router.post("/", middleware.isLoggedIn,function(req,res){
   //create a form which adds new bar to the barlist
   var name = req.body.name;
+  var price = req.body.price;
   var image = req.body.image;
   var description = req.body.description;
   var author = {
       id: req.user._id,
       username: req.user.username
   };
-  var newBar = {name: name, image: image, description: description, author: author};
+  var newBar = {name: name, price: price,  image: image, description: description, author: author};
   Barslist.create(newBar, function(err,newlyCreated){
       if(err){
           console.log(err);

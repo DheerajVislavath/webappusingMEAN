@@ -31,6 +31,7 @@ router.post("/", middleware.isLoggedIn,function(req,res){
           console.log(err);
       }
       else {
+          req.flash("success", "New Restaurant added!");
           res.redirect("/bestbars");
       }
   });
@@ -48,7 +49,6 @@ router.get("/:id", function(req,res){
            console.log(err);
         }
         else{
-        
             res.render("bars/show",{barslist:barslist});
         }
     });
@@ -67,6 +67,7 @@ router.put("/:id", middleware.checkArticleOwnership,function(req,res){
        if(err){
            console.log(err)
        } else{
+           req.flash("success", "Restaurant Updated");
            res.redirect("/bestbars/" + req.params.id);
        }
     });
@@ -79,6 +80,7 @@ router.put("/:id", middleware.checkArticleOwnership,function(req,res){
         if(err){
             console.log(err);
         }else{
+            req.flash("success", "Restaurant Deleted");
             res.redirect("/bestbars/");
         }
     }) ;
